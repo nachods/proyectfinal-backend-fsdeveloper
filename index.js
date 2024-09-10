@@ -7,14 +7,14 @@ const dbPass = process.env.DB_PASS;
 const dbHost = process.env.DB_HOST;
 const ipServer = process.env.IP_SERVER;
 const apiVersion = process.env.API_VERSION;
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 const connectDB = async () => {
   //Aca conecto la base de datos
   try {
     //Aca indico donde se va a conectar, la direccion con los datos
     await mongoose.connect(`mongodb+srv://${dbUser}:${dbPass}@${dbHost}`);
-    app.listen(port, () => {
+    app.listen(port, '0.0.0.0', () => {
       //Inicia el server con 'npm run dev'
       console.log("================================");
       console.log("============API RESET===========");
